@@ -11,9 +11,14 @@
       <ion-label>Favoritos</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="auth">
+    <ion-tab-button tab="auth" *ngIf="user === null">
       <ion-icon name="person-outline"></ion-icon>
       <ion-label>Ingresar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile" *ngIf="user !== null">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>Perfil</ion-label>
     </ion-tab-button>
 
   </ion-tab-bar>

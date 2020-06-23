@@ -21,6 +21,10 @@ const routes: Routes = [
         loadChildren: () => import("@pages/auth/auth-routing.module").then(m => m.AuthPageRoutingModule)
       },
       {
+        path: "profile",
+        loadChildren: () => import("@pages/profile/profile-routing.module").then(m => m.ProfilePageRoutingModule)
+      },
+      {
         path: "",
         pathMatch: "full",
         redirectTo: "sections/home"

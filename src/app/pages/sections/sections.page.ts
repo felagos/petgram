@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
+import { UserModel } from 'src/app/models/user.modal';
 
 @Component({
   selector: 'app-sections',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SectionsPage implements OnInit {
 
-  constructor() { }
+  public user: UserModel = null;
+
+  constructor(private storage: StorageService) { }
 
   ngOnInit() {
+    this.user = this.storage.getItem<UserModel>("user");
   }
 
 }

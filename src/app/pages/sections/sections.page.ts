@@ -13,8 +13,8 @@ export class SectionsPage implements OnInit {
 
   constructor(private storage: StorageService) { }
 
-  ngOnInit() {
-    this.user = this.storage.getItem<UserModel>("user");
+  async ngOnInit() {
+    this.user = await this.storage.getItem<UserModel>("user");
   }
 
 }

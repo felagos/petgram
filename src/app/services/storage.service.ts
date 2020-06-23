@@ -7,11 +7,11 @@ export class StorageService {
 
   constructor() { }
 
-  public setItem<T>(key: string, value: T) {
+  public async setItem<T>(key: string, value: T) {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  public getItem<T>(key: string): T {
+  public async getItem<T>(key: string): Promise<T> {
     const value = localStorage.getItem(key);
     return JSON.parse(value);
   }

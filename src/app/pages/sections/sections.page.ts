@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from 'src/app/services/storage.service';
-import { UserModel } from 'src/app/models/user.modal';
+import { StorageService } from '@services/storage.service';
+import { UserModel } from '@models/user.modal';
 
 @Component({
   selector: 'app-sections',

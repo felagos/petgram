@@ -1,0 +1,11 @@
+ion-header {
+  ion-img {
+    width: 100%;
+    height: 70px;
+  }
+
+  ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+  }
+}

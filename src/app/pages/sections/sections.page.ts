@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from '@services/storage.service';
-import { UserModel } from '@models/user.model';
 import { StorageEnum } from 'src/app/enums/storage.enum';
+import { UserModel } from 'src/app/models/user.model';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-sections',

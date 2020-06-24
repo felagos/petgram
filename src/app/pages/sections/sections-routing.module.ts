@@ -10,19 +10,19 @@ const routes: Routes = [
     children: [
       {
         path: "home",
-        loadChildren: () => import("@pages/home/home-routing.module").then(m => m.HomePageRoutingModule)
+        loadChildren: () => import("../home/home.module").then(m => m.HomePageModule)
       },
       {
         path: "favorites",
-        loadChildren: () => import("@pages/favorites/favorites-routing.module").then(m => m.FavoritesPageRoutingModule)
+        loadChildren: () => import("../favorites/favorites.module").then(m => m.FavoritesPageModule)
       },
       {
         path: "auth",
-        loadChildren: () => import("@pages/auth/auth-routing.module").then(m => m.AuthPageRoutingModule)
+        loadChildren: () => import("../auth/auth.module").then(m => m.AuthPageModule)
       },
       {
         path: "profile",
-        loadChildren: () => import("@pages/profile/profile-routing.module").then(m => m.ProfilePageRoutingModule)
+        loadChildren: () => import("../profile/profile.module").then(m => m.ProfilePageModule)
       },
       {
         path: "",

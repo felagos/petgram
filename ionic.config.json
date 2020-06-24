@@ -1,5 +1,7 @@
 {
   "name": "petgram",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

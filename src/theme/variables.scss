@@ -79,6 +79,7 @@
 
   --ion-color-app: #8d00ff;
   --ion-color-tab: #8d00ff;
+  --ion-color-header: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -153,6 +154,7 @@
 
     --ion-color-app: #ffffff;
     --ion-color-tab: white;
+    --ion-color-header: #000000;
   }
 
   /*

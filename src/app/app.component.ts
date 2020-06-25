@@ -31,7 +31,7 @@ export class AppComponent {
 
   private async initThemeApp() {
     const isDarkMode = await this.storageService.getItem<boolean>(StorageEnum.DARK_MODE);
-    const theme = isDarkMode ? "ligth" : "dark";
+    const theme = isDarkMode ? "light" : "dark";
     document.body.setAttribute("data-theme", theme);
   }
 }

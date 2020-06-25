@@ -76,6 +76,9 @@
   --ion-color-light-tint: #f5f6f9;
 
   --ion-color-purple: #8d00ff;
+
+  --ion-color-app: #8d00ff;
+  --ion-color-tab: #8d00ff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -147,6 +150,9 @@
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+
+    --ion-color-app: #ffffff;
+    --ion-color-tab: white;
   }
 
   /*

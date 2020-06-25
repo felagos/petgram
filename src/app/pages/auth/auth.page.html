@@ -19,39 +19,7 @@
                 </ion-item>
 
                 <ion-button class="btn-purple" expand="block">Ingresar</ion-button>
-
-            </form>
-        </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-        <ion-card-header>
-            <ion-card-title>Registrarse</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <form [formGroup]="registerForm" (ngSubmit)="doRegister()" class="form">
-                <ion-item>
-                    <ion-icon name="mail-outline" slot="start"></ion-icon>
-                    <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>
-                </ion-item>
-
-                <ion-item>
-                    <ion-icon name="person-outline" slot="start"></ion-icon>
-                    <ion-input placeholder="Nombre" formControlName="name"></ion-input>
-                </ion-item>
-
-                <ion-item>
-                    <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-                    <ion-input type="password" placeholder="Contraseña" formControlName="password"></ion-input>
-                </ion-item>
-
-                <ion-item>
-                    <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
-                    <ion-input type="password" placeholder="Repita contraseña" formControlName="repeatPassword"></ion-input>
-                </ion-item>
-
-                <ion-button class="btn-purple" expand="block">Registrarse</ion-button>
-
+                <a routerLink="register">Registrarse</a>
             </form>
         </ion-card-content>
     </ion-card>

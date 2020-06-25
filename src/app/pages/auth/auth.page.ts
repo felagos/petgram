@@ -7,12 +7,11 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./auth.page.scss"],
 })
 export class AuthPage implements OnInit {
+
   public loginForm: FormGroup;
-  public registerForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.initFormLogin();
-    this.initFormRegister();
   }
 
   ngOnInit() {}
@@ -24,16 +23,6 @@ export class AuthPage implements OnInit {
     });
   }
 
-  private initFormRegister() {
-    this.registerForm = this.fb.group({
-      email: ["", Validators.required],
-      password: ["", [Validators.required, Validators.email]],
-      repeatPassword: ["", [Validators.required, Validators.email]],
-      name: ["", Validators.required],
-    });
-  }
-
   public doLogin() {}
 
-  public doRegister() {}
 }

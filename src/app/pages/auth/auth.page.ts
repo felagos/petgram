@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ModalController } from '@ionic/angular';
+import { RegisterPage } from '../modals/register/register.page';
 
 @Component({
   selector: "app-auth",
@@ -10,7 +12,8 @@ export class AuthPage implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private modalController: ModalController) {
     this.initFormLogin();
   }
 
@@ -21,6 +24,14 @@ export class AuthPage implements OnInit {
       email: ["", Validators.required],
       password: ["", [Validators.required, Validators.email]],
     });
+  }
+
+  public async openModalRegister() {
+    const modal = await this.modalController.create({
+      component: RegisterPage
+    });
+
+    modal.present();
   }
 
   public doLogin() {}

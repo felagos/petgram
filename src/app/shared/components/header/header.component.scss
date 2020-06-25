@@ -7,6 +7,11 @@ ion-header {
     ion-toolbar {
       --background: transparent;
       --ion-color-base: transparent !important;
+
+      ion-icon {
+        padding-right: 10px;
+        font-size: 24px;
+      }
     }
   }
   

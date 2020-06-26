@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StorageService } from './services/storage.service';
 import { StorageEnum } from './enums/storage.enum';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +17,13 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private swUpdate: SwUpdate,
+    private alertController: AlertController
   ) {
     this.initializeApp();
     this.initThemeApp();
+    this.updateApp();
   }
 
   initializeApp() {
@@ -34,4 +38,32 @@ export class AppComponent {
     const theme = isDarkMode ? "light" : "dark";
     document.body.setAttribute("data-theme", theme);
   }
+
+  private updateApp() {
+    this.swUpdate.available.subscribe(async event => {
+      const alert = await this.alertController.create({
+        header: "Actualización",
+        message: "¿ Desea recargar la app para descargar la actualización ?",
+        buttons: [
+          {
+            text: "Aceptar",
+            handler: () => {
+              window.location.reload();
+            }
+          },
+          {
+            text: "Cancelar",
+            role: "cancel",
+            cssClass: "secondary",
+            handler: (blah) => {
+              console.log("Confirm Cancel");
+            }
+          }
+        ]
+      });
+
+      await alert.present();
+    });
+  }
+
 }

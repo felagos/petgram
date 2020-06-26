@@ -9,6 +9,12 @@ import { Category } from 'src/app/models/category.model';
 })
 export class HomePage implements OnInit {
 
+  public slideOpts = {
+    initialSlide: 0,
+    speed: 400,
+    autoHeight: true,
+    slidesPerView: 3
+  };
   public categories: Category[] = [];
 
   constructor(private apiService: ApiService) { }

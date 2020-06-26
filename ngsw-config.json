@@ -12,6 +12,7 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js",
+          "/*.svg",
           "/svg/*.svg"
         ]
       }

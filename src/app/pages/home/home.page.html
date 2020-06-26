@@ -4,7 +4,7 @@
 
     <ion-slides [options]="slideOpts">
         <ion-slide *ngFor="let category of categories">
-            <ion-avatar>
+            <ion-avatar [routerLink]="['category', category._id]">
                 <img [src]="'data:image/png;base64, ' + category.foto | safeUrl" />
                 <span>{{category.emoji}}</span>
             </ion-avatar>

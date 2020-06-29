@@ -34,6 +34,10 @@ export class AuthPage implements OnInit {
     modal.present();
   }
 
+  public get controls() {
+    return this.loginForm.controls;
+  }
+
   public doLogin() {}
 
 }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
 import { Category } from '../models/category.model';
 import { Observable } from 'rxjs';
+import { DataResponse } from '../models/data.response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.URL_BASE}/categorias`).pipe(
-      map((response: any) => response.data)
-    );
+  public getAllCategories(): Observable<DataResponse<Category[]>> {
+    return this.http.get<DataResponse<Category[]>>(`${this.URL_BASE}/categorias`);
   }
 }

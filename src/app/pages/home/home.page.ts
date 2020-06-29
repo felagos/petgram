@@ -20,7 +20,7 @@ export class HomePage implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.getAllCategories().subscribe(response => this.categories = response);
+    this.apiService.getAllCategories().subscribe(response => this.categories = response.data);
   }
 
 }

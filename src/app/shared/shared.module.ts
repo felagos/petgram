@@ -16,6 +16,7 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     IonicModule.forRoot()
   ],
   exports: [
+    CommonModule,
     HeaderComponent,
     IonicModule,
     SafeUrlPipe

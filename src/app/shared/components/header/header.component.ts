@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() { }
 
   async presentActionSheet() {
-    const isDarkMode: boolean = document.body.getAttribute('data-theme') === "dark"
+    const isDarkMode: boolean = document.body.getAttribute('data-theme') === "dark";
 
     const actionSheet = await this.actionSheetController.create({
       header: "Opciones",

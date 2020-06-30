@@ -40,6 +40,10 @@ export class AppComponent {
   }
 
   private updateApp() {
+    if(!this.swUpdate.isEnabled) {
+      console.log("not enabled");
+      return;
+    }
     this.swUpdate.available.subscribe(async event => {
       const alert = await this.alertController.create({
         header: "Actualización",

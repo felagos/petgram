@@ -40,7 +40,7 @@ export class AppComponent {
   }
 
   private updateApp() {
-    if(!this.swUpdate.isEnabled) {
+    if (!this.swUpdate.isEnabled) {
       console.log("not enabled");
       return;
     }
@@ -53,7 +53,7 @@ export class AppComponent {
           {
             text: "Aceptar",
             handler: () => {
-              window.location.reload();
+              this.swUpdate.activateUpdate().then(() => window.location.reload());
             }
           },
           {

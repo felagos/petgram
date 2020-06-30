@@ -31,15 +31,6 @@ export class HeaderComponent implements OnInit {
           }
         },
         {
-          text: isDarkMode ? "Desactivar modo oscuro" : "Activar modo oscuro",
-          icon: isDarkMode ? "moon" : "sunny",
-          handler: async () => {
-            const theme = isDarkMode ? "light" : "dark";
-            document.body.setAttribute("data-theme", theme);
-            await this.storageService.setItem<boolean>(StorageEnum.DARK_MODE, isDarkMode);
-          }
-        },
-        {
           text: "Cerrar",
           icon: "close",
           role: "cancel",

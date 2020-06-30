@@ -2,6 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalController } from '@ionic/angular';
 import { RegisterPage } from '../modals/register/register.page';
+import { LoaderService } from 'src/app/services/loader.service';
+import { StorageService } from 'src/app/services/storage.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastService } from 'src/app/services/toast.service';
+import { HttpStatus } from 'src/app/enums/http.enum';
+import { StorageEnum } from 'src/app/enums/storage.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-auth",
@@ -13,16 +20,21 @@ export class AuthPage implements OnInit {
   public loginForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-    private modalController: ModalController) {
+    private modalController: ModalController,
+    private loaderService: LoaderService,
+    private storage: StorageService,
+    private authService: AuthService,
+    private toast: ToastService,
+    private router: Router) {
     this.initFormLogin();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   private initFormLogin() {
     this.loginForm = this.fb.group({
       email: ["", Validators.required],
-      password: ["", [Validators.required, Validators.email]],
+      password: ["", Validators.required],
     });
   }
 
@@ -38,6 +50,22 @@ export class AuthPage implements OnInit {
     return this.loginForm.controls;
   }
 
-  public doLogin() {}
+  public async doLogin() {
+    const { email, password } = this.loginForm.value;
+
+    await this.loaderService.present();
+
+    this.authService.doLogin(email, password).subscribe(async response => {
+      this.storage.setItem(StorageEnum.TOKEN, response.data);
+      await this.loaderService.dismiss();
+
+      this.router.navigateByUrl("/sections/home");
+    }, async e => {
+      await this.loaderService.dismiss();
+      const message = e.status === HttpStatus.NOT_FOUND ? "Email y/o contraseña incorrectas" : "Se ha producido un error";
+      this.toast.presentToast(message);
+    });
+
+  }
 
 }

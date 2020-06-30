@@ -48,7 +48,7 @@
               <ion-label class="label-error" color="danger" *ngIf="registerForm.errors?.mustMatch">Las contraseñas deben coincidir</ion-label>
             </ion-item>
             
-            <ion-button class="btn-purple" expand="block" [disabled]="!registerForm.valid">Registrarse</ion-button>
+            <ion-button type="submit" class="btn-purple" expand="block" [disabled]="!registerForm.valid">Registrarse</ion-button>
 
         </form>
     </ion-card-content>

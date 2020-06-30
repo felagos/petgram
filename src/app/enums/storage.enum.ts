@@ -1,4 +1,5 @@
 export enum StorageEnum {
     USER = "user",
-    DARK_MODE = "dark_mode"
+    DARK_MODE = "dark_mode",
+    TOKEN = "token"
 }

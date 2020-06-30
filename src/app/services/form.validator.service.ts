@@ -18,6 +18,9 @@ export class FormValidatorService {
       if (value.trim() === "")
         return of(null);
 
+      if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(value))
+        return of(null);
+
       return this.authService.existsEmail(control.value).pipe(
         map(response => {
           return response.data ? { "existsEmail": true } : null;
@@ -40,7 +43,7 @@ export class FormValidatorService {
       if (password.value !== repeatPassword.value) {
         return { "mustMatch": true };
       }
-        
+
 
       return null;
 

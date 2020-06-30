@@ -25,7 +25,7 @@
                     <ion-label class="label-error" color="danger" *ngIf="controls.password.errors?.required">Campo obligatorio</ion-label>
                   </ion-item>
 
-                <ion-button class="btn-purple" expand="block" [disabled]="!loginForm.valid">Ingresar</ion-button>
+                <ion-button type="submit" class="btn-purple" expand="block" [disabled]="!loginForm.valid">Ingresar</ion-button>
                 <div class="wrapper-link ion-text-center">
                     <a class="app-color" (click)="openModalRegister()">Registrarse</a>
                 </div>

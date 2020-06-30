@@ -18,4 +18,14 @@ export class AuthService {
     return this.http.post<DataResponse<boolean>>(url, { email });
   }
 
+  public doLogin(email: string, password: string): Observable<DataResponse<string>> {
+    const url = `${this.URL_BASE}/doLogin`;
+    return this.http.post<DataResponse<string>>(url, { email, password });
+  }
+
+  public doRegister(email: string, password: string, name: string): Observable<DataResponse<string>> {
+    const url = `${this.URL_BASE}/register`;
+    return this.http.post<DataResponse<string>>(url, { email, password, nombre: name });
+  }
+
 }

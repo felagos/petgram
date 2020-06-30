@@ -50,7 +50,6 @@ export class AppComponent {
     }
 
     interval(3000).subscribe(() => {
-      console.log("aca");
       this.swUpdate.checkForUpdate().then(() => console.log('checking for updates'));
     });
 

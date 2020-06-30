@@ -31,24 +31,12 @@ export class HeaderComponent implements OnInit {
           }
         },
         {
-          text: "Cerrar",
-          icon: "close",
-          role: "cancel",
-          handler: () => {
-          }
-        },
-        {
-          text: "Cerrar",
-          icon: "close",
-          role: "cancel",
-          handler: () => {
-          }
-        },
-        {
-          text: "Cerrar",
-          icon: "close",
-          role: "cancel",
-          handler: () => {
+          text: isDarkMode ? "Desactivar modo oscuro" : "Activar modo oscuro",
+          icon: isDarkMode ? "moon" : "sunny",
+          handler: async () => {
+            const theme = isDarkMode ? "light" : "dark";
+            document.body.setAttribute("data-theme", theme);
+            await this.storageService.setItem<boolean>(StorageEnum.DARK_MODE, isDarkMode);
           }
         },
         {

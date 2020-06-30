@@ -29,6 +29,12 @@ export class HeaderComponent implements OnInit {
           await this.storageService.setItem<boolean>(StorageEnum.DARK_MODE, isDarkMode);
         }
       }, {
+        text: "Recargar",
+        icon: "refresh",
+        handler: () => {
+          window.location.reload();
+        }
+      }, {
         text: "Cerrar",
         icon: "close",
         role: "cancel",

@@ -45,6 +45,7 @@ export class AppComponent {
       return;
     }
     this.swUpdate.available.subscribe(async event => {
+      console.log(event);
       const alert = await this.alertController.create({
         header: "Actualización",
         message: "¿ Desea recargar la app para descargar la actualización ?",

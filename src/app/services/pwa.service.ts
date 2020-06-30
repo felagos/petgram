@@ -15,8 +15,8 @@ export class PwaService {
     if (this.swUpdate.isEnabled) {
 
       const appIsStable$ = this.appRef.isStable.pipe(first(isStable => isStable === true));
-      const everySixHours$ = interval(3600000);
-      const updater$ = concat(appIsStable$, everySixHours$);
+      const interval$ = interval(3600000);
+      const updater$ = concat(appIsStable$, interval$);
 
       updater$.subscribe(() => this.swUpdate.checkForUpdate().then(() => console.log("Buscando actualizaciones")));
 

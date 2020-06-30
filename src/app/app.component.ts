@@ -67,6 +67,12 @@ export class AppComponent {
             }
           },
           {
+            text: "Aceptar",
+            handler: () => {
+              this.swUpdate.activateUpdate().then(() => window.location.reload());
+            }
+          },
+          {
             text: "Cancelar",
             role: "cancel",
             cssClass: "secondary",

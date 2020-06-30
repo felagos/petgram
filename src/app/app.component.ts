@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StorageService } from './services/storage.service';
 import { StorageEnum } from './enums/storage.enum';
 import { SwUpdate } from '@angular/service-worker';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,9 @@ import { SwUpdate } from '@angular/service-worker';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -44,6 +48,12 @@ export class AppComponent {
       console.log("not enabled");
       return;
     }
+
+    interval(3000).subscribe(() => {
+      console.log("aca");
+      this.swUpdate.checkForUpdate().then(() => console.log('checking for updates'));
+    });
+
     this.swUpdate.available.subscribe(async event => {
       console.log(event);
       const alert = await this.alertController.create({
@@ -69,6 +79,7 @@ export class AppComponent {
 
       await alert.present();
     });
+    
   }
 
 }

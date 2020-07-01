@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StorageService } from './services/storage.service';
 import { StorageEnum } from './enums/storage.enum';
 import { PwaService } from './services/pwa.service';
+import { Plugins, StatusBarStyle } from '@capacitor/core';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +15,6 @@ export class AppComponent {
 
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
     private storageService: StorageService,
     private pwaService: PwaService
   ) {
@@ -26,11 +23,21 @@ export class AppComponent {
     this.updateApp();
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
+  async initializeApp() {
+    const { SplashScreen, StatusBar } = Plugins;
+    try {
+      const isDarkMode = await this.storageService.getItem<boolean>(StorageEnum.DARK_MODE);
+
+      await SplashScreen.hide();
+      await StatusBar.setStyle({ style: isDarkMode ? StatusBarStyle.Dark : StatusBarStyle.Light });
+
+      if (this.platform.is("android")) {
+        StatusBar.setBackgroundColor({ color: "#CDCDCD" });
+      }
+
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   private async initThemeApp() {

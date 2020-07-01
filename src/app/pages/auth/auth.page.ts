@@ -9,6 +9,7 @@ import { ToastService } from 'src/app/services/toast.service';
 import { HttpStatus } from 'src/app/enums/http.enum';
 import { StorageEnum } from 'src/app/enums/storage.enum';
 import { Router } from '@angular/router';
+import { LoggedDataService } from 'src/app/services/logged.data.service';
 
 @Component({
   selector: "app-auth",
@@ -25,7 +26,8 @@ export class AuthPage implements OnInit {
     private storage: StorageService,
     private authService: AuthService,
     private toast: ToastService,
-    private router: Router) {
+    private router: Router,
+    private dataService: LoggedDataService) {
     this.initFormLogin();
   }
 
@@ -58,6 +60,8 @@ export class AuthPage implements OnInit {
     this.authService.doLogin(email, password).subscribe(async response => {
       this.storage.setItem(StorageEnum.TOKEN, response.data);
       await this.loaderService.dismiss();
+
+      this.dataService.addData(true);
 
       this.router.navigateByUrl("/sections/home");
     }, async e => {

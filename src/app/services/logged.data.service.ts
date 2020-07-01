@@ -13,8 +13,8 @@ export class LoggedDataService {
   private data$ = this.subject.asObservable();
 
   constructor(private storage: StorageService) {
-    this.storage.getItem<UserModel>(StorageEnum.USER).then(user => {
-      this.subject.next(user !== null);
+    this.storage.getItem<string>(StorageEnum.TOKEN).then(token => {
+      this.subject.next(token !== null);
     });
   }
 

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageEnum } from 'src/app/enums/storage.enum';
-import { UserModel } from 'src/app/models/user.model';
-import { StorageService } from 'src/app/services/storage.service';
+import { LoggedDataService } from 'src/app/services/logged.data.service';
 
 @Component({
   selector: 'app-sections',
@@ -10,12 +8,12 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class SectionsPage implements OnInit {
 
-  public user: UserModel = null;
+  public isLogged = false;
 
-  constructor(private storage: StorageService) { }
+  constructor(private dataService: LoggedDataService) { }
 
-  async ngOnInit() {
-    this.user = await this.storage.getItem<UserModel>(StorageEnum.USER);
+  ngOnInit() {
+    this.dataService.data.subscribe(response => this.isLogged = response);
   }
 
 }

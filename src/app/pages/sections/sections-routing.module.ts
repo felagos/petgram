@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SectionsPage } from './sections.page';
+import { SesionGuard } from 'src/app/guards/sesion.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
       },
       {
         path: "favorites",
-        loadChildren: () => import("../favorites/favorites.module").then(m => m.FavoritesPageModule)
+        loadChildren: () => import("../favorites/favorites.module").then(m => m.FavoritesPageModule),
+        canActivate: [SesionGuard]
       },
       {
         path: "auth",
@@ -22,7 +24,8 @@ const routes: Routes = [
       },
       {
         path: "profile",
-        loadChildren: () => import("../profile/profile.module").then(m => m.ProfilePageModule)
+        loadChildren: () => import("../profile/profile.module").then(m => m.ProfilePageModule),
+        canActivate: [SesionGuard]
       },
       {
         path: "",

@@ -58,7 +58,7 @@ export class AuthPage implements OnInit {
     await this.loaderService.present();
 
     this.authService.doLogin(email, password).subscribe(async response => {
-      this.storage.setItem(StorageEnum.TOKEN, response.data);
+      this.storage.setItem(StorageEnum.TOKEN, response.data.token);
       await this.loaderService.dismiss();
 
       this.dataService.addData(true);

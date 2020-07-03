@@ -62,7 +62,7 @@ export class RegisterPage implements OnInit {
     this.authService.doRegister(email, password, name).subscribe(async response => {
       console.log(response);
       alert(response.data);
-      this.storage.setItem(StorageEnum.TOKEN, response.data);
+      this.storage.setItem(StorageEnum.TOKEN, response.data.token);
       await this.loaderService.dismiss();
       this.closeModal();
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageService } from 'src/app/services/storage.service';
+import { UserModel } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  public user: UserModel;
 
-  ngOnInit() {
+  constructor(private storage: StorageService) { }
+
+  async ngOnInit() {
+    this.user = await this.storage.getUser();
   }
 
 }

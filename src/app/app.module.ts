@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot({ mode: "ios" }),
+    IonicModule.forRoot({ mode: "md" }),
     AppRoutingModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

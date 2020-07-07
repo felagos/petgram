@@ -29,4 +29,9 @@ export class AuthService {
     return this.http.post<DataResponse<TokenResponse>>(url, { email, password, nombre: name });
   }
 
+  public refreshToken(refreshToken: string): Observable<DataResponse<string>> {
+    const url = `${this.URL_BASE}/token`;
+    return this.http.get<DataResponse<string>>(url, { headers: { authorization: refreshToken } });
+  }
+
 }

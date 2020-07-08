@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { Category } from 'src/app/models/category.model';
 import { LoaderService } from 'src/app/services/loader.service';
@@ -8,7 +8,7 @@ import { LoaderService } from 'src/app/services/loader.service';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   public slideOpts = {
     initialSlide: 0,
@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
   constructor(private apiService: ApiService,
     private loaderService: LoaderService) { }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.apiService.getAllCategories().subscribe(response => this.categories = response.data);
   }
 

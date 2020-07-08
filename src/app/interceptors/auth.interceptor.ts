@@ -1,9 +1,4 @@
-import {
-	HttpInterceptor,
-	HttpRequest,
-	HttpHandler,
-	HttpEvent,
-} from "@angular/common/http";
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
 import { Observable, from, throwError, BehaviorSubject } from "rxjs";
 import { Injectable } from "@angular/core";
 import { AuthService } from "../services/auth.service";
@@ -17,8 +12,7 @@ import { switchMap, catchError, filter, take } from "rxjs/operators";
 export class AuthInterceptor implements HttpInterceptor {
 
 	private isRefreshing = false;
-	private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-	private newToken = "";
+	private refreshTokenSubject: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
 	constructor(private authService: AuthService,
 		private storage: StorageService) { }
@@ -27,24 +21,26 @@ export class AuthInterceptor implements HttpInterceptor {
 		return req.clone({ headers: req.headers.set("Authorization", token) });
 	}
 
-	private handle401(token: string, req: HttpRequest<any>, next: HttpHandler) {
+	private handle401(refreshToken: string, req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		if (!this.isRefreshing) {
 			this.isRefreshing = true;
 			this.refreshTokenSubject.next(null);
 
-			return this.authService.refreshToken(token).pipe(
+			return this.authService.refreshToken(refreshToken).pipe(
 				switchMap((response) => {
 					this.isRefreshing = false;
-					this.newToken = response.data;
 					this.refreshTokenSubject.next(response.data);
-					return from(this.storage.setItem(StorageEnum.TOKEN, response.data)).pipe(
-						switchMap(() => next.handle(this.addToken(req, response.data)))
-					);
+					this.storage.setItem(StorageEnum.TOKEN, response.data);
+					return next.handle(this.addToken(req, response.data));
 				})
 			);
-		} else {
-			return next.handle(this.addToken(req, this.newToken));
 		}
+
+		return this.refreshTokenSubject.pipe(
+			filter(data => data !== null),
+			take(1),
+			switchMap(token => next.handle(this.addToken(req, token)))
+		);
 	}
 
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -54,9 +50,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
 				return next.handle(req).pipe(
 					catchError((error) => {
-						if (error.status === 401 || error.status === 403) {
+						if (error.status === 401) {
 							return from(this.storage.getItem<string>(StorageEnum.REFRESH_TOKEN)).pipe(
-								switchMap(refreshToken => this.handle401(refreshToken, req, next))
+								switchMap(refreshToken => {
+									return this.handle401(refreshToken, req, next);
+								})
 							)
 						}
 						return throwError(error);

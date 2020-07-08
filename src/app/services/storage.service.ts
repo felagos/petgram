@@ -16,7 +16,7 @@ export class StorageService {
     this.storage = Storage;
   }
 
-  public setItem<T>(key: string, value: T) {
+  public setItem<T>(key: string, value: T): Promise<void> {
     return this.storage.set({
       key,
       value: JSON.stringify(value)
@@ -29,10 +29,10 @@ export class StorageService {
   }
 
   public async getUser(): Promise<UserModel> {
-    const tokens = await this.getItem<TokenResponse>(StorageEnum.TOKEN);
-    const token = tokens.token;
-    const sectionsToken = token.split(".");
-    const payload: any = atob(sectionsToken[1]);
+    const tokens: TokenResponse = await this.getItem<TokenResponse>(StorageEnum.TOKEN);
+    const token: string = tokens.token;
+    const sectionsToken: string[] = token.split(".");
+    const payload: string = atob(sectionsToken[1]);
     const data = JSON.parse(payload);
 
     return data.user as UserModel;

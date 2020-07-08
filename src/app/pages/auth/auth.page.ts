@@ -58,10 +58,12 @@ export class AuthPage implements OnInit {
     await this.loaderService.present();
 
     this.authService.doLogin(email, password).subscribe(async response => {
-      this.storage.setItem(StorageEnum.TOKEN, response.data.token);
-      this.storage.setItem(StorageEnum.REFRESH_TOKEN, response.data.refreshToken);
-      await this.loaderService.dismiss();
+      const pToken = this.storage.setItem(StorageEnum.TOKEN, response.data.token);
+      const pRefresh = this.storage.setItem(StorageEnum.REFRESH_TOKEN, response.data.refreshToken);
+      const pLoader = this.loaderService.dismiss();
 
+      await Promise.all([pToken, pRefresh, pLoader]);
+alert();
       this.dataService.addData(true);
 
       this.router.navigateByUrl("/sections/home");

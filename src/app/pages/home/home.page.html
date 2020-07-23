@@ -11,4 +11,17 @@
         </ion-slide>
     </ion-slides>
 
+    <ion-list>
+        <ion-card *ngFor="let pet of pets">
+            <ion-card-header>
+                <img [src]="'data:image/png;base64, ' + pet.foto | safeUrl"/>
+            </ion-card-header>
+            <ion-card-content>
+                <div class="content-wrapper">
+                    <ion-icon name="heart-outline"></ion-icon> <span>Likes {{pet.likes}}</span>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+
 </ion-content>

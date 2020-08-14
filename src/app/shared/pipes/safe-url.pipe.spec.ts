@@ -2,7 +2,7 @@ import { SafeUrlPipe } from './safe-url.pipe';
 import { TestBed } from '@angular/core/testing';
 import { DomSanitizer } from '@angular/platform-browser';
 
-fdescribe('SafeUrlPipe', () => {
+describe('SafeUrlPipe', () => {
   let pipe: SafeUrlPipe;
 
   beforeEach(async () => {

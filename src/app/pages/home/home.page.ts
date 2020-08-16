@@ -23,7 +23,10 @@ export class HomePage {
 
   ionViewDidEnter() {
     this.apiService.getAllCategories().subscribe(response => this.categories = response.data);
-    this.apiService.getAllPets().subscribe(pets => this.pets = pets.data);
+    this.apiService.getAllPets().subscribe(pets => {
+      pets.data.docs = [...pets.data.docs, ...pets.data.docs, ...pets.data.docs, ...pets.data.docs, ...pets.data.docs, ...pets.data.docs]
+      this.pets = pets.data
+    });
   }
 
   async showCategory(id: string) {
@@ -32,6 +35,20 @@ export class HomePage {
       this.pets = pets.data;
       this.loaderService.dismiss();
     });
+  }
+
+  loadMoreData(event) {
+    const { hasNextPage, nextPage } = this.pets;
+    if (hasNextPage) {
+      this.apiService.getAllPets(nextPage).subscribe(pets => {
+        this.pets = {
+          ...pets,
+          docs: [...this.pets.docs, ...pets.data.docs]
+        };
+        event.target.complete();
+      });
+    }
+    else event.target.disabled = true;
   }
 
 }

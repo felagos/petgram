@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
-import { Category } from 'src/app/models/category.model';
-import { LoaderService } from 'src/app/services/loader.service';
-import { PetModel } from 'src/app/models/pet.model';
+import { Category, PetModel, Pagination } from 'src/app/models';
+import { ApiService, LoaderService } from 'src/app/services';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +16,9 @@ export class HomePage {
     slidesPerView: 3
   };
   public categories: Category[] = [];
-  public pets: PetModel[] = [];
+  public pets: Pagination<PetModel> = {
+    docs: []
+  };
 
   constructor(private apiService: ApiService,
     private loaderService: LoaderService) { }

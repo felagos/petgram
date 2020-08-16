@@ -12,7 +12,7 @@
     </ion-slides>
 
     <ion-list>
-        <ion-card *ngFor="let pet of pets">
+        <ion-card *ngFor="let pet of pets.docs">
             <ion-card-header>
                 <img [src]="'data:image/png;base64, ' + pet.foto | safeUrl"/>
             </ion-card-header>

@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Category } from '../models/category.model';
 import { Observable } from 'rxjs';
-import { DataResponse } from '../models/data.response.model';
-import { PetModel } from '../models/pet.model';
+import { Category, PetModel, DataResponse, Pagination } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +17,12 @@ export class ApiService {
     return this.http.get<DataResponse<Category[]>>(`${this.URL_BASE}/categorias`);
   }
 
-  public getPetsByCateogryId(categoryId: string): Observable<DataResponse<PetModel[]>> {
-    return this.http.get<DataResponse<PetModel[]>>(`${this.URL_BASE}/mascotas/getByCategoriId/${categoryId}`); 
+  public getPetsByCateogryId(categoryId: string, page: number = 1): Observable<DataResponse<Pagination<PetModel>>> {
+    return this.http.get<DataResponse<Pagination<PetModel>>>(`${this.URL_BASE}/mascotas/getByCategoriId/${categoryId}/${page}`); 
   }
 
-  public getAllPets(): Observable<DataResponse<PetModel[]>> {
-    return this.http.get<DataResponse<PetModel[]>>(`${this.URL_BASE}/mascotas/getAllPets`); 
+  public getAllPets(page: number = 1): Observable<DataResponse<Pagination<PetModel>>> {
+    return this.http.get<DataResponse<Pagination<PetModel>>>(`${this.URL_BASE}/mascotas/getAllPets/${page}`); 
   }
 
 }

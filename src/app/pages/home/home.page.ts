@@ -16,9 +16,7 @@ export class HomePage {
     slidesPerView: 3
   };
   public categories: Category[] = [];
-  public pets: Pagination<PetModel> = {
-    docs: []
-  };
+  public pets: Pagination<PetModel>;
 
   constructor(private apiService: ApiService,
     private loaderService: LoaderService) { }

@@ -11,7 +11,7 @@
         </ion-slide>
     </ion-slides>
 
-    <ion-list>
+    <ion-list *ngIf="pets">
         <ion-card *ngFor="let pet of pets.docs">
             <ion-card-header>
                 <img [src]="'data:image/png;base64, ' + pet.foto | safeUrl"/>

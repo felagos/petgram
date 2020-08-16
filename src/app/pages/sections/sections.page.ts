@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggedDataService } from 'src/app/services/logged.data.service';
+import { LoggedDataService } from 'src/app/services';
 
 @Component({
   selector: 'app-sections',

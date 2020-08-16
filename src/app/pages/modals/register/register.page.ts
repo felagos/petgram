@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { FormValidatorService } from 'src/app/services/form.validator.service';
 import { Router } from '@angular/router';
-import { ToastService } from 'src/app/services/toast.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { StorageService } from 'src/app/services/storage.service';
-import { LoaderService } from 'src/app/services/loader.service';
-import { StorageEnum } from 'src/app/enums/storage.enum';
-import { HttpStatus } from 'src/app/enums/http.enum';
+import { FormValidatorService, LoaderService, StorageService, AuthService, ToastService } from 'src/app/services';
+import { StorageEnum } from 'src/app/enums';
+
 
 @Component({
   selector: 'app-register',

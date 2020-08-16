@@ -1,15 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalController } from '@ionic/angular';
-import { RegisterPage } from '../modals/register/register.page';
-import { LoaderService } from 'src/app/services/loader.service';
-import { StorageService } from 'src/app/services/storage.service';
-import { AuthService } from 'src/app/services/auth.service';
-import { ToastService } from 'src/app/services/toast.service';
-import { HttpStatus } from 'src/app/enums/http.enum';
-import { StorageEnum } from 'src/app/enums/storage.enum';
 import { Router } from '@angular/router';
 import { LoggedDataService } from 'src/app/services/logged.data.service';
+import { LoaderService, StorageService, ToastService, AuthService } from 'src/app/services';
+import { RegisterPage } from '../modals/register/register.page';
+import { StorageEnum, HttpStatus } from 'src/app/enums';
 
 @Component({
   selector: "app-auth",

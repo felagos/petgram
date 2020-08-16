@@ -59,7 +59,7 @@ export class AuthPage implements OnInit {
       const pLoader = this.loaderService.dismiss();
 
       await Promise.all([pToken, pRefresh, pLoader]);
-alert();
+
       this.dataService.addData(true);
 
       this.router.navigateByUrl("/sections/home");

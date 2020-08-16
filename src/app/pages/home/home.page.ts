@@ -23,10 +23,7 @@ export class HomePage {
 
   ionViewDidEnter() {
     this.apiService.getAllCategories().subscribe(response => this.categories = response.data);
-    this.apiService.getAllPets().subscribe(pets => {
-      pets.data.docs = [...pets.data.docs, ...pets.data.docs, ...pets.data.docs, ...pets.data.docs, ...pets.data.docs, ...pets.data.docs]
-      this.pets = pets.data
-    });
+    this.apiService.getAllPets().subscribe(pets => this.pets = pets.data);
   }
 
   async showCategory(id: string) {

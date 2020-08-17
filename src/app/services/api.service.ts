@@ -19,11 +19,11 @@ export class ApiService {
   }
 
   public getPetsByCateogryId(categoryId: string, page: number = 1): Observable<DataResponsePagination<PetModel>> {
-    return this.http.get<DataResponsePagination<PetModel>>(`${this.URL_BASE}/mascotas/getByCategoriId/${categoryId}/${page}`); 
+    return this.http.get<DataResponsePagination<PetModel>>(`${this.URL_BASE}/mascotas/getByCategoriId/${categoryId}/${page}`);
   }
 
   public getAllPets(page: number = 1): Observable<DataResponsePagination<PetModel>> {
-    return this.http.get<DataResponsePagination<PetModel>>(`${this.URL_BASE}/mascotas/getAllPets/${page}`); 
+    return this.http.get<DataResponsePagination<PetModel>>(`${this.URL_BASE}/mascotas/getAllPets/${page}`);
   }
 
   public addToFavorite(petId: string): Observable<DataResponse<PetModel>> {
@@ -32,6 +32,10 @@ export class ApiService {
 
   public deleteFavorite(petId: string): Observable<DataResponse<PetModel>> {
     return this.http.delete<DataResponse<PetModel>>(`${this.URL_BASE}/favorite/${petId}`);
+  }
+
+  public getAllFavorities(): Observable<DataResponse<PetModel[]>> {
+    return this.http.get<DataResponse<PetModel[]>>(`${this.URL_BASE}/favorite`);
   }
 
 }

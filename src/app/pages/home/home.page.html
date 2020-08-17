@@ -18,7 +18,7 @@
             </ion-card-header>
             <ion-card-content>
                 <div class="content-wrapper">
-                    <ion-icon name="heart-outline"></ion-icon> <span>Likes {{pet.likes}}</span>
+                    <ion-icon [name]="pet.favorite ? 'heart' : 'heart-outline'" (click)="handleFavorite(pet)" ></ion-icon> <span>Likes {{pet.likes}}</span>
                 </div>
             </ion-card-content>
         </ion-card>

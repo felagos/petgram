@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Category, PetModel, Pagination } from 'src/app/models';
-import { ApiService, LoaderService } from 'src/app/services';
+import { ApiService, LoaderService, ToastService } from 'src/app/services';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +19,8 @@ export class HomePage {
   public pets: Pagination<PetModel>;
 
   constructor(private apiService: ApiService,
-    private loaderService: LoaderService) { }
+    private loaderService: LoaderService,
+    private toastService: ToastService) { }
 
   ionViewDidEnter() {
     this.apiService.getAllCategories().subscribe(response => this.categories = response.data);
@@ -46,6 +47,35 @@ export class HomePage {
       });
     }
     else event.target.disabled = true;
+  }
+
+  private addToFavorite(pet: PetModel) {
+    this.apiService.addToFavorite(pet._id).subscribe(response => {
+      const index = this.pets.docs.findIndex(doc => doc._id === pet._id);
+      this.pets.docs[index] = {
+        ...this.pets.docs[index],
+        favorite: true
+      };
+      this.toastService.presentToast("Agregado a mis favoritos");
+    });
+  }
+
+  private deleteFavorite(pet: PetModel) {
+    this.apiService.deleteFavorite(pet._id).subscribe(response => {
+      const index = this.pets.docs.findIndex(doc => doc._id === pet._id);
+      this.pets.docs[index] = {
+        ...this.pets.docs[index],
+        favorite: false
+      };
+      this.toastService.presentToast("Eliminado de mis favoritos");
+    });
+  }
+
+  handleFavorite(pet: PetModel) {
+    if(!pet.favorite)
+      this.addToFavorite(pet);
+    else
+      this.deleteFavorite(pet);
   }
 
 }

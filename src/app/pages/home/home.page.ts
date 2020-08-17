@@ -50,7 +50,7 @@ export class HomePage {
   }
 
   private addToFavorite(pet: PetModel) {
-    this.apiService.addToFavorite(pet._id).subscribe(response => {
+    this.apiService.addToFavorite(pet).subscribe(response => {
       const index = this.pets.docs.findIndex(doc => doc._id === pet._id);
       this.pets.docs[index] = {
         ...this.pets.docs[index],

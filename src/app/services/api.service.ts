@@ -26,8 +26,8 @@ export class ApiService {
     return this.http.get<DataResponsePagination<PetModel>>(`${this.URL_BASE}/mascotas/getAllPets/${page}`);
   }
 
-  public addToFavorite(petId: string): Observable<DataResponse<PetModel>> {
-    return this.http.put<DataResponse<PetModel>>(`${this.URL_BASE}/favorite`, { petId });
+  public addToFavorite(pet: PetModel): Observable<DataResponse<PetModel>> {
+    return this.http.put<DataResponse<PetModel>>(`${this.URL_BASE}/favorite`, { pet });
   }
 
   public deleteFavorite(petId: string): Observable<DataResponse<PetModel>> {

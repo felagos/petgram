@@ -4,11 +4,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { IonicModule } from '@ionic/angular';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { SlideCategoryComponent } from './components/slide-category/slide-category.component';
+import { ScrollPetsComponent } from './components/scroll-pets/scroll-pets.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SlideCategoryComponent,
+    ScrollPetsComponent,
     SafeUrlPipe
   ],
   imports: [
@@ -20,7 +22,8 @@ import { SlideCategoryComponent } from './components/slide-category/slide-catego
     HeaderComponent,
     IonicModule,
     SafeUrlPipe,
-    SlideCategoryComponent
+    SlideCategoryComponent,
+    ScrollPetsComponent
   ]
 })
 export class SharedModule { }

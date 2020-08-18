@@ -2,23 +2,8 @@
 
 <ion-content fullscreen>
 
-    <app-slide-category [categories]="categories" (emitter)="showCategory($event)" ></app-slide-category>
+    <app-slide-category [categories]="categories" (showCategoryEvent)="showCategory($event)" ></app-slide-category>
 
-    <ion-list *ngIf="pets">
-        <ion-card *ngFor="let pet of pets.docs">
-            <ion-card-header>
-                <img [src]="'data:image/png;base64, ' + pet.foto | safeUrl"/>
-            </ion-card-header>
-            <ion-card-content>
-                <div class="content-wrapper">
-                    <ion-icon [name]="pet.favorite ? 'heart' : 'heart-outline'" (click)="handleFavorite(pet)" ></ion-icon> <span>Liked</span>
-                </div>
-            </ion-card-content>
-        </ion-card>
-    </ion-list>
-    <ion-infinite-scroll threshold="30%" (ionInfinite)="loadMoreData($event)">
-        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando mascotas ...">
-        </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    <app-scroll-pets [pets]="pets" (handleFavoriteEvent)="handleFavorite($event)" (loadMoreDataEvent)="loadMoreData($event)" ></app-scroll-pets>
 
 </ion-content>

@@ -11,7 +11,13 @@ export class ToastService {
   async presentToast(message = "", duration: number = 3000) {
     const toast = await this.toastController.create({
       message,
-      duration
+      duration,
+      buttons: [
+        {
+          icon: "close",
+          role: "cancel"
+        }
+      ]
     });
     
     toast.present();

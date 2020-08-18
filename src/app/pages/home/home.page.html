@@ -2,14 +2,7 @@
 
 <ion-content fullscreen>
 
-    <ion-slides [options]="slideOpts">
-        <ion-slide *ngFor="let category of categories">
-            <ion-avatar (click)="showCategory(category._id)">
-                <img [src]="'data:image/png;base64, ' + category.foto | safeUrl" />
-                <span>{{category.emoji}}</span>
-            </ion-avatar>
-        </ion-slide>
-    </ion-slides>
+    <app-slide-category [categories]="categories" (emitter)="showCategory($event)" ></app-slide-category>
 
     <ion-list *ngIf="pets">
         <ion-card *ngFor="let pet of pets.docs">

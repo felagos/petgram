@@ -1,0 +1,8 @@
+<ion-slides [options]="slideOpts">
+  <ion-slide *ngFor="let category of categories">
+      <ion-avatar (click)="showCategory(category._id)">
+          <img [src]="'data:image/png;base64, ' + category.foto | safeUrl" />
+          <span>{{category.emoji}}</span>
+      </ion-avatar>
+  </ion-slide>
+</ion-slides>

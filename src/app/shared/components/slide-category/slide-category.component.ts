@@ -9,7 +9,7 @@ import { Category } from 'src/app/models';
 export class SlideCategoryComponent {
 
   @Input() public categories: Category[] = [];
-  @Output() public emitter = new EventEmitter<string>();
+  @Output() public showCategoryEvent = new EventEmitter<string>();
 
   public slideOpts = {
     initialSlide: 0,
@@ -21,7 +21,7 @@ export class SlideCategoryComponent {
   constructor() { }
 
   showCategory(id: string) { 
-    this.emitter.emit(id);
+    this.showCategoryEvent.emit(id);
   }
 
 }

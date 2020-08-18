@@ -1,5 +1,11 @@
 <app-header></app-header>
 
 <ion-content [fullscreen]="true">
-
+    <ion-list class="list-wrapper">
+        <ion-card *ngFor="let pet of pets">
+            <ion-card-header>
+                <img [src]="'data:image/png;base64, ' + pet.foto | safeUrl"/>
+            </ion-card-header>
+        </ion-card>
+      </ion-list>
 </ion-content>

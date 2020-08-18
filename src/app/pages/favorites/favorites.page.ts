@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from 'src/app/services';
 import { PetModel } from 'src/app/models';
 
@@ -7,14 +7,11 @@ import { PetModel } from 'src/app/models';
   templateUrl: './favorites.page.html',
   styleUrls: ['./favorites.page.scss'],
 })
-export class FavoritesPage implements OnInit {
+export class FavoritesPage {
 
   public pets: PetModel[] = [];
 
   constructor(private apiService: ApiService) { }
-
-  ngOnInit() {
-  }
 
   ionViewDidEnter() {
     this.apiService.getAllFavorities().subscribe(pets => this.pets = pets.data);

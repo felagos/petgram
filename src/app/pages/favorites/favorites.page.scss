@@ -1,0 +1,13 @@
+.empty-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        color: var(--ion-color-app);
+        font-size: 28px;
+    }
+
+}

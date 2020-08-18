@@ -8,4 +8,9 @@
             </ion-card-header>
         </ion-card>
       </ion-list>
+
+      <div *ngIf="pets.length === 0" class="empty-wrapper">
+          <span>No se encontraron datos :(</span>
+      </div>
+
 </ion-content>

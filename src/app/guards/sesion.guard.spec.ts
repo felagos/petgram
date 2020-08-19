@@ -9,7 +9,7 @@ import { StorageEnum } from '../enums/storage.enum';
 import { AppRoutingModule } from '../app-routing.module';
 import { DummyComponent } from '../mocks/DummyComponent';
 
-fdescribe('SesionGuard', () => {
+describe('SesionGuard', () => {
   let guard: SesionGuard;
   let router: Router;
   let storageService: StorageService;

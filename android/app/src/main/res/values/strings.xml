@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">petgram</string>
+    <string name="title_activity_main">petgram</string>
+    <string name="package_name">com.fl.petgram</string>
+    <string name="custom_url_scheme">com.fl.petgram</string>
+</resources>

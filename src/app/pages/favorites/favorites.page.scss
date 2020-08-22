@@ -39,10 +39,22 @@ ion-badge {
     
     ion-icon {
         color: var(--ion-color-app);
-        font-size: 36px;
+        font-size: 32px;
 
         @media only screen and (device-width: 280px) {
-            font-size: 32px;
+            font-size: 28px;
+        }
+
+        @media only screen and (device-width: 768px) {
+            font-size: 44px;
+        }
+          
+        @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+            font-size: 44px;
+        }
+          
+        @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+            font-size: 44px;
         }
 
     }

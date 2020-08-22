@@ -9,6 +9,7 @@
     "build": "ng build --prod && node clearIcon.js",
     "test": "ng test --no-watch --code-coverage true --source-map=true",
     "lint": "ng lint",
+    "sync": "yarn run build && nxp cap sync",
     "e2e": "ng e2e"
   },
   "private": true,

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage.service';
 import { StorageEnum } from 'src/app/enums/storage.enum';
-import { Platform } from '@ionic/angular';
 import { Capacitor } from '@capacitor/core';
 
 @Component({

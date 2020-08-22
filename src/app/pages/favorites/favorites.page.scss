@@ -8,19 +8,43 @@
     span {
         color: var(--ion-color-app);
         font-size: 28px;
+        text-align: center;
     }
 
 }
 
 ion-badge {
-    left: 88%;
+
+    @media only screen and (device-width: 280px) {
+        left: 84vw;
+    }
+
+    @media only screen and (device-width: 768px) {
+        left: 93vw;
+    }
+      
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+        left: 93vw;
+    }
+      
+    @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+        left: 93vw;
+    }
+
+    left: 88vw;
     position: absolute;
     top: -2px;
     --background: transparent;
     
+    
     ion-icon {
-        font-size: 36px;
         color: var(--ion-color-app);
+        font-size: 36px;
+
+        @media only screen and (device-width: 280px) {
+            font-size: 32px;
+        }
+
     }
 
 }

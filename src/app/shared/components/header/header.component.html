@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-img src="assets/petgram.svg"></ion-img>
+    <ion-img [src]="'assets/' + iconName + '.svg'"></ion-img>
     <ion-icon *ngIf="showSettings" (click)="presentActionSheet()" name="settings-outline" slot="end"></ion-icon>
   </ion-toolbar>
 </ion-header>

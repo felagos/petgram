@@ -1,8 +1,6 @@
-<app-header></app-header>
+<app-header iconName="petgram_favoritos"></app-header>
 
 <ion-content [fullscreen]="true">
-    <ion-title *ngIf="pets.length !== 0">Mis favoritos</ion-title>
-
     <ion-list *ngIf="pets.length !== 0" class="list-wrapper">
         <ion-card *ngFor="let pet of pets">
             <ion-card-content>

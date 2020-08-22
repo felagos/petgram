@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage.service';
 import { StorageEnum } from 'src/app/enums/storage.enum';
@@ -9,16 +9,14 @@ import { Capacitor } from '@capacitor/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  public showSettings = (Capacitor.getPlatform() !== "android" && Capacitor.getPlatform() !== "ios")
+  @Input() public iconName:string = "petgram";
+  public showSettings = (Capacitor.getPlatform() !== "android" && Capacitor.getPlatform() !== "ios");
 
   constructor(private actionSheetController: ActionSheetController,
     private storageService: StorageService) { }
 
-  ngOnInit() { 
-    
-  }
 
   async presentActionSheet() {
     const isDarkMode: boolean = document.body.getAttribute('data-theme') === "dark";

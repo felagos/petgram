@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { StorageService } from 'src/app/services/storage.service';
 import { StorageEnum } from 'src/app/enums/storage.enum';
+import { Platform } from '@ionic/angular';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +12,14 @@ import { StorageEnum } from 'src/app/enums/storage.enum';
 })
 export class HeaderComponent implements OnInit {
 
+  public showSettings = (Capacitor.getPlatform() !== "android" && Capacitor.getPlatform() !== "ios")
+
   constructor(private actionSheetController: ActionSheetController,
     private storageService: StorageService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    
+  }
 
   async presentActionSheet() {
     const isDarkMode: boolean = document.body.getAttribute('data-theme') === "dark";

@@ -7,6 +7,7 @@ import { SlideCategoryComponent } from './components/slide-category/slide-catego
 import { ScrollPetsComponent } from './components/scroll-pets/scroll-pets.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { EmptyResultComponent } from './components/empty-result/empty-result.component';
+import { PhotoProfilePipe } from './pipes/photo-profile.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { EmptyResultComponent } from './components/empty-result/empty-result.com
     ScrollPetsComponent,
     SafeUrlPipe,
     CapitalizePipe,
-    EmptyResultComponent
+    EmptyResultComponent,
+    PhotoProfilePipe
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { EmptyResultComponent } from './components/empty-result/empty-result.com
     SlideCategoryComponent,
     ScrollPetsComponent,
     CapitalizePipe,
-    EmptyResultComponent
+    EmptyResultComponent,
+    PhotoProfilePipe
   ]
 })
 export class SharedModule { }

@@ -7,8 +7,8 @@ import { UserModel } from 'src/app/models';
 export class PhotoProfilePipe implements PipeTransform {
 
   transform(user: UserModel): string {
-    if(!user.foto) return "assets/no_user.png";
-    return user.foto;
+    if(!user || !user.foto) return "assets/imgs/no_user.png";
+    return `data:image/png;base64, ${user.foto}`;
   }
 
 }

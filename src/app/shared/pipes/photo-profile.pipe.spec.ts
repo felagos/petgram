@@ -15,7 +15,7 @@ fdescribe('PhotoProfilePipe', () => {
       foto: ""
     };
     const response = pipe.transform(user);
-    expect(response).toEqual("assets/no_user.png");
+    expect(response).toEqual("assets/imgs/no_user.png");
   });
 
   it('return photo', () => {
@@ -24,8 +24,11 @@ fdescribe('PhotoProfilePipe', () => {
       nombre: "",
       foto: "la foto"
     };
+
+    const base64Img = `data:image/png;base64, ${user.foto}`;
+
     const response = pipe.transform(user);
-    expect(response).toEqual(user.foto);
+    expect(response).toEqual(base64Img);
   });
 
 });

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Category, PetModel, Pagination } from 'src/app/models';
 import { ApiService, LoaderService, ToastService } from 'src/app/services';
+import { ModalController } from '@ionic/angular';
+import { AddPetPage } from '../add-pet/add-pet.page';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,8 @@ export class HomePage {
 
   constructor(private apiService: ApiService,
     private loaderService: LoaderService,
-    private toastService: ToastService) { }
+    private toastService: ToastService,
+    private modalController: ModalController) { }
 
   ionViewDidEnter() {
     this.apiService.getAllCategories().subscribe(response => this.categories = response.data);
@@ -76,6 +79,16 @@ export class HomePage {
       this.addToFavorite(pet);
     else
       this.deleteFavorite(pet);
+  }
+
+  async showModal() {
+    const modal = await this.modalController.create({
+      component: AddPetPage,
+      componentProps: {
+        categories: this.categories
+      }
+    });
+    return await modal.present();
   }
 
 }

@@ -23,9 +23,21 @@
           </ion-select>
         </ion-item>
 
+        <ion-item lines="none" *ngIf="form.controls['category'].invalid && form.controls['category'].touched">
+          <ion-label class="label-error" color="danger">
+            Debe seleccionar una categoría
+          </ion-label>
+        </ion-item>
+
         <ion-item>
           <ion-label position="floating">Nombre</ion-label>
           <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
+          <ion-label class="label-error" color="danger">
+            Debe ingresar un nombre
+          </ion-label>
         </ion-item>
 
         <ion-button type="button" class="btn-purple" expand="block" (click)="takeFoto()">

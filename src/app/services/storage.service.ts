@@ -36,4 +36,9 @@ export class StorageService {
     return data.user as UserModel;
   }
 
+  public async isLogged(): Promise<boolean> {
+    const token = await this.getItem<string>(StorageEnum.TOKEN);
+    return token !== null;
+  }
+
 }

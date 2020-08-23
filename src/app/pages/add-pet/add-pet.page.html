@@ -15,7 +15,8 @@
 
         <ion-item>
           <ion-label>Categoría</ion-label>
-          <ion-select formControlName="category" placeholder="Seleccionar" cancelText="Cerrar" okText="OK" interface="action-sheet">
+          <ion-select formControlName="category" placeholder="Seleccionar" cancelText="Cerrar" okText="OK"
+            interface="action-sheet">
             <ion-select-option *ngFor="let category of categories" [value]="category._id">
               {{ category.emoji }} {{ category.nombre | capitalize }}
             </ion-select-option>
@@ -32,7 +33,14 @@
           Tomar Foto
         </ion-button>
 
-        <ion-button type="submit" class="btn-purple" expand="block" [disabled]="!form.valid">
+        <ion-item *ngIf="photo !== ''" lines="none">
+          <ion-badge class="badge-icon" (click)="deletePreview()">
+            <ion-icon name="trash"></ion-icon>
+          </ion-badge>
+          <img [src]="'data:image/' + format + ';base64, ' + photo | safeUrl" class="preview" />
+        </ion-item>
+
+        <ion-button type="submit" class="btn-purple" expand="block" [disabled]="!form.valid && photo === ''">
           Guardar
         </ion-button>
 

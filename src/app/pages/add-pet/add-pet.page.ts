@@ -14,7 +14,8 @@ export class AddPetPage {
 
   public categories: Category[] = [];
   public form: FormGroup;
-  private photo: string = "";
+  public photo: string = "";
+  public format: string = "";
 
   constructor(private fb: FormBuilder,
     private modalController: ModalController,
@@ -36,8 +37,7 @@ export class AddPetPage {
   }
 
   public async takeFoto() {
-    try {
-      const { Camera } = Plugins;
+    const { Camera } = Plugins;
 
     const image = await Camera.getPhoto({
       quality: 90,
@@ -46,10 +46,12 @@ export class AddPetPage {
     });
 
     this.photo = image.base64String;
-    } catch(e) {
-      console.log(e);
-      alert(e.message);
-    }
+    this.format = image.format;
+  }
+
+  public deletePreview() {
+    this.photo = "";
+    this.format = "";
   }
 
   public async savePet() {

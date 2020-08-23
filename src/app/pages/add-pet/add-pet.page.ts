@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { Category, PetModel } from 'src/app/models';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Plugins, CameraResultType } from '@capacitor/core';
-import { ApiService, ToastService, LoaderService } from 'src/app/services';
+import { ApiService, ToastService, LoaderService, CameraService } from 'src/app/services';
 
 @Component({
   selector: 'app-add-pet',
@@ -21,7 +20,8 @@ export class AddPetPage {
     private modalController: ModalController,
     private apiService: ApiService,
     private toastService: ToastService,
-    private loaderService: LoaderService) {
+    private loaderService: LoaderService,
+    private cameraService: CameraService) {
     this.init();
   }
 
@@ -37,13 +37,7 @@ export class AddPetPage {
   }
 
   public async takeFoto() {
-    const { Camera } = Plugins;
-
-    const image = await Camera.getPhoto({
-      quality: 90,
-      allowEditing: false,
-      resultType: CameraResultType.Base64
-    });
+    const image = await this.cameraService.getPhoto();
 
     this.photo = image.base64String;
     this.format = image.format;

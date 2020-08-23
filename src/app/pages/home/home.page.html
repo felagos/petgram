@@ -6,7 +6,7 @@
 
     <app-scroll-pets [pets]="pets" (handleFavoriteEvent)="handleFavorite($event)" (loadMoreDataEvent)="loadMoreData($event)" ></app-scroll-pets>
 
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab *ngIf="isLogged" vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button (click)="showModal()">
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>

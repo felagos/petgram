@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Category, PetModel, Pagination } from 'src/app/models';
-import { ApiService, LoaderService, ToastService } from 'src/app/services';
+import { ApiService, LoaderService, ToastService, StorageService } from 'src/app/services';
 import { ModalController } from '@ionic/angular';
 import { AddPetPage } from '../add-pet/add-pet.page';
 
@@ -19,15 +19,18 @@ export class HomePage {
   };
   public categories: Category[] = [];
   public pets: Pagination<PetModel>;
+  public isLogged: boolean = false;
 
   constructor(private apiService: ApiService,
     private loaderService: LoaderService,
     private toastService: ToastService,
-    private modalController: ModalController) { }
+    private modalController: ModalController,
+    private storage: StorageService) { }
 
-  ionViewDidEnter() {
+  async ionViewDidEnter() {
     this.apiService.getAllCategories().subscribe(response => this.categories = response.data);
     this.apiService.getAllPets().subscribe(pets => this.pets = pets.data);
+    this.isLogged = await this.storage.isLogged();
   }
 
   async showCategory(id: string) {
@@ -75,7 +78,7 @@ export class HomePage {
   }
 
   handleFavorite(pet: PetModel) {
-    if(!pet.favorite)
+    if (!pet.favorite)
       this.addToFavorite(pet);
     else
       this.deleteFavorite(pet);

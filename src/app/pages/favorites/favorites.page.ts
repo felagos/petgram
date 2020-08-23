@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService, ToastService } from 'src/app/services';
+import { ApiService, ToastService, LoaderService } from 'src/app/services';
 import { PetModel } from 'src/app/models';
 import { AlertController } from '@ionic/angular';
 
@@ -14,10 +14,15 @@ export class FavoritesPage {
 
   constructor(private apiService: ApiService,
     private toastService: ToastService,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    private laoder: LoaderService) { }
 
-  ionViewDidEnter() {
-    this.apiService.getAllFavorities().subscribe(pets => this.pets = pets.data);
+  async ionViewDidEnter() {
+    await this.laoder.present("Cargando favoritos ...");
+    this.apiService.getAllFavorities().subscribe(pets => {
+      this.laoder.dismiss();
+      this.pets = pets.data;
+    });
   }
 
   async deleteFavorite(id: string) {

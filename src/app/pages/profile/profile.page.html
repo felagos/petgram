@@ -2,4 +2,24 @@
 
 <ion-content>
 
+    <div class="profile" *ngIf="user">
+        <ion-avatar>
+            <ion-icon name="camera-outline" (click)="takePhoto()"></ion-icon>
+            <img [src]="user?.foto | photoProfile | safeUrl" />
+          </ion-avatar>
+          <ion-card>
+              <ion-card-content>
+                <ion-item>
+                    <ion-icon name="mail-outline" slot="start"></ion-icon>
+                    <ion-input type="email" placeholder="Email" [value]="user.email" disabled readonly></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+                    <ion-input type="text" placeholder="Nombre" [value]="user.nombre" disabled readonly></ion-input>
+                </ion-item>
+              </ion-card-content>
+          </ion-card>
+    </div>
+
 </ion-content>

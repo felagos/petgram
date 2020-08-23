@@ -1,20 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserModel } from 'src/app/models';
-import { StorageService } from 'src/app/services';
+import { StorageService, LoaderService, CameraService } from 'src/app/services';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
 
-  public user: UserModel;
+  public user: UserModel = null;
 
-  constructor(private storage: StorageService) { }
+  constructor(private storage: StorageService,
+    private loader: LoaderService,
+    private cameraService: CameraService) { }
 
-  async ngOnInit() {
+  async ionViewDidEnter() {
+    await this.loader.present("Cargando perfil ...");
+
     this.user = await this.storage.getUser();
+
+    await this.loader.dismiss();
+  }
+
+  async takePhoto() {
+    const image = await this.cameraService.getPhoto();
+    this.user.foto = image.base64String;
   }
 
 }

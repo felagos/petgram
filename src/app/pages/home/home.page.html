@@ -2,13 +2,17 @@
 
 <ion-content fullscreen>
 
-    <app-slide-category [categories]="categories" (showCategoryEvent)="showCategory($event)" ></app-slide-category>
+  <app-slide-category [categories]="categories" (showCategoryEvent)="showCategory($event)"></app-slide-category>
 
-    <app-scroll-pets [pets]="pets" (handleFavoriteEvent)="handleFavorite($event)" (loadMoreDataEvent)="loadMoreData($event)" ></app-scroll-pets>
+  <app-scroll-pets [pets]="pets" (handleFavoriteEvent)="handleFavorite($event)"
+    (loadMoreDataEvent)="loadMoreData($event)"></app-scroll-pets>
 
-    <ion-fab *ngIf="isLogged" vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button (click)="showModal()">
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-      </ion-fab>
+  <app-empty-result *ngIf="pets && pets.docs.length === 0"></app-empty-result>
+
+  <ion-fab *ngIf="isLogged" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="showModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

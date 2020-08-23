@@ -1,18 +1,3 @@
-.empty-wrapper {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-
-    span {
-        color: var(--ion-color-app);
-        font-size: 28px;
-        text-align: center;
-    }
-
-}
-
 ion-badge {
 
     @media only screen and (device-width: 280px) {

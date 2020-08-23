@@ -12,8 +12,6 @@
         </ion-card>
     </ion-list>
 
-    <div *ngIf="pets.length === 0" class="empty-wrapper">
-        <span class="not-found-text">No se encontraron datos :(</span>
-    </div>
+    <app-empty-result *ngIf="pets.length === 0"></app-empty-result>>
 
 </ion-content>

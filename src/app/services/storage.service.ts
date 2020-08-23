@@ -29,12 +29,10 @@ export class StorageService {
   }
 
   public async getUser(): Promise<UserModel> {
-    const tokens: TokenResponse = await this.getItem<TokenResponse>(StorageEnum.TOKEN);
-    const token: string = tokens.token;
+    const token = await this.getItem<string>(StorageEnum.TOKEN);
     const sectionsToken: string[] = token.split(".");
     const payload: string = atob(sectionsToken[1]);
     const data = JSON.parse(payload);
-
     return data.user as UserModel;
   }
 

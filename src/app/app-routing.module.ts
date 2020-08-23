@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import("./pages/sections/sections.module").then(m => m.SectionsPageModule)
+  },
+  {
+    path: 'add-pet',
+    loadChildren: () => import('./pages/add-pet/add-pet.module').then( m => m.AddPetPageModule)
   }
 ];
 

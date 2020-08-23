@@ -7,3 +7,4 @@ export  * from './pwa.service';
 export  * from './storage.service';
 export  * from './toast.service';
 export  * from './token.service';
+export * from './camera.service';

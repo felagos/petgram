@@ -33,12 +33,12 @@ ion-badge {
 
     left: 88vw;
     position: absolute;
-    top: -2px;
+    top: 10px;
     --background: transparent;
     
     
     ion-icon {
-        color: var(--ion-color-app);
+        color: var(--ion-color-purple);
         font-size: 32px;
 
         @media only screen and (device-width: 280px) {

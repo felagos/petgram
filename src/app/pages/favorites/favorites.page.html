@@ -4,8 +4,8 @@
     <ion-list *ngIf="pets.length !== 0" class="list-wrapper">
         <ion-card *ngFor="let pet of pets">
             <ion-card-content>
-                <ion-badge>
-                    <ion-icon name="trash" (click)="deleteFavorite(pet._id)"></ion-icon>
+                <ion-badge (click)="deleteFavorite(pet._id)">
+                    <ion-icon name="trash"></ion-icon>
                 </ion-badge>
                 <img [src]="'data:image/png;base64, ' + pet.foto | safeUrl" />
             </ion-card-content>

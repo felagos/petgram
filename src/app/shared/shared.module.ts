@@ -5,13 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { SlideCategoryComponent } from './components/slide-category/slide-category.component';
 import { ScrollPetsComponent } from './components/scroll-pets/scroll-pets.component';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SlideCategoryComponent,
     ScrollPetsComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    CapitalizePipe
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { ScrollPetsComponent } from './components/scroll-pets/scroll-pets.compon
     IonicModule,
     SafeUrlPipe,
     SlideCategoryComponent,
-    ScrollPetsComponent
+    ScrollPetsComponent,
+    CapitalizePipe
   ]
 })
 export class SharedModule { }

@@ -38,4 +38,8 @@ export class ApiService {
     return this.http.get<DataResponse<PetModel[]>>(`${this.URL_BASE}/favorite`);
   }
 
+  public savePet(pet: PetModel): Observable<DataResponse<boolean>> {
+    return this.http.post<DataResponse<boolean>>(`${this.URL_BASE}/mascotas`, pet);
+  }
+
 }

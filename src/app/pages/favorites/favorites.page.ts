@@ -25,6 +25,10 @@ export class FavoritesPage {
     });
   }
 
+  private deleteFromArray(id: string) {
+    this.pets = this.pets.filter(pet => pet._id !== id);
+  }
+
   async deleteFavorite(id: string) {
     const alert = await this.alertController.create({
       header: 'Confirmar',
@@ -34,6 +38,7 @@ export class FavoritesPage {
           text: 'Aceptar',
           handler: () => {
             this.apiService.deleteFavorite(id).subscribe(() => {
+              this.deleteFromArray(id);
               this.toastService.presentToast("Se ha quitado de los favoritos");
             });
           }

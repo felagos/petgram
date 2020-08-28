@@ -32,7 +32,7 @@ fdescribe('CameraService', () => {
     const photo = await service.getPhoto();
 
     expect(photo).toEqual(photoResult);
-    expect(Camera.getPhoto).toHaveBeenCalledWith(cameraOption)
+    expect(Camera.getPhoto).toHaveBeenCalledWith(cameraOption);
   });
 
 });

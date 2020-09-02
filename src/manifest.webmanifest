@@ -6,6 +6,7 @@
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
+  "related_applications": "https://play.google.com/store/apps/details?id=com.fl.petgram",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

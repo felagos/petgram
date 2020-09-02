@@ -9,10 +9,6 @@ const routes: Routes = [
   {
     path: 'add-pet',
     loadChildren: () => import('./pages/add-pet/add-pet.module').then( m => m.AddPetPageModule)
-  },
-  {
-    path: 'privacy',
-    loadChildren: () => import('./pages/privacy/privacy.module').then( m => m.PrivacyPageModule)
   }
 ];
 

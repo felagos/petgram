@@ -42,6 +42,7 @@ export class HeaderComponent {
         }
       ]
     });
+    console.log("actionSheet", actionSheet)
     await actionSheet.present();
   }
 

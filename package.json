@@ -6,7 +6,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "build:fixLimit": "node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --prod",
     "test": "ng test --no-watch --code-coverage true --source-map=true",
     "lint": "ng lint",
     "sync": "yarn run build && npx cap sync",

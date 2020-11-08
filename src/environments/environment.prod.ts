@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: "https://petgram-backend.herokuapp.com"
+  API_URL: "https://backend.felipelagos.dev/petgram"
 };

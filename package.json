@@ -9,7 +9,7 @@
     "build": "ng build --prod",
     "test": "ng test --no-watch --code-coverage true --source-map=true",
     "lint": "ng lint",
-    "sync": "yarn run build && npx cap sync",
+    "sync": "npm run build && npx cap sync",
     "e2e": "ng e2e"
   },
   "private": true,

@@ -15,7 +15,8 @@ export class CameraService {
       quality: 90,
       allowEditing: false,
       resultType: CameraResultType.Base64,
-      source: CameraSource.Prompt
+      source: CameraSource.Photos,
+      webUseInput: true
     });
   }
 

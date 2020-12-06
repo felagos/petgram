@@ -28,3 +28,4 @@ jobs:
         recursive: true
         local: "./www"
         remote: ${{ secrets.FOLDER_DESTINATION }}
+        concurrency: 10

@@ -13,10 +13,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14'
-    - name: Run E2E Test
-      run: npm run cy:run
     - name: Run install
       run: npm ci
+    - name: Run E2E Test
+      run: npm run cy:run
     - name: Run build
       run: npm run build  
     - name: copy file via ssh key

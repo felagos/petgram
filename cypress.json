@@ -1,0 +1,6 @@
+{
+    "baseUrl": "https://petgram.felipelagos.dev",
+    "chromeWebSecurity": false,
+    "supportFile": "cypress/support/index.ts",
+    "trashAssetsBeforeRuns": true
+}

@@ -8,9 +8,12 @@
     "start": "node server.js",
     "build": "ng build --prod",
     "test": "ng test --no-watch --code-coverage true --source-map=true",
-    "lint": "ng lint",
     "sync": "npm run build && npx cap sync",
-    "e2e": "ng e2e"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --headless",
+    "test:server": "http-server-pwa www -p 5000",
+    "test:e2e": "npm run build && run-p --race test:server cy:open",
+    "ci:cy-run": "npm run build && start-server-and-test test:server http://localhost:5000 cy:run"
   },
   "private": true,
   "dependencies": {
@@ -25,8 +28,6 @@
     "@capacitor/core": "^2.4.0",
     "@ionic/angular": "^5.0.0",
     "@ionic/pwa-elements": "^1.5.2",
-    "express": "^4.17.1",
-    "express-sslify": "^1.2.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
@@ -42,7 +43,10 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+    "angular-http-server": "^1.9.0",
     "codelyzer": "^5.1.2",
+    "cypress": "^6.4.0",
+    "http-server-pwa": "^2.1.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~5.0.0",
@@ -50,10 +54,19 @@
     "karma-coverage-istanbul-reporter": "^2.1.1",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "npm-run-all": "^4.1.5",
     "protractor": "^7.0.0",
+    "start-server-and-test": "^1.12.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "not IE 9-11"
+  ]
 }

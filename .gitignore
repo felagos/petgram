@@ -31,3 +31,6 @@ npm-debug.log*
 /www
 
 /coverage
+
+cypress/screenshots/
+cypress/videos/

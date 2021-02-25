@@ -1,5 +1,5 @@
 {
-    "baseUrl": "https://petgram.felipelagos.dev",
+    "baseUrl": "http://localhost:5000",
     "chromeWebSecurity": false,
     "supportFile": "cypress/support/index.ts",
     "trashAssetsBeforeRuns": true

@@ -16,7 +16,11 @@ jobs:
     - name: Run install
       run: npm ci
     - name: Run E2E Test
-      run: npm run cy:run
+      uses: cypress-io/github-action@v1
+      with:
+        start: npm run cy:run
+        wait-on: 'http://localhost:5000'
+        config: baseUrl=https://localhost:5000
     - name: Run build
       run: npm run build  
     - name: Run Clean Icons

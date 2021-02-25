@@ -19,6 +19,8 @@ jobs:
       run: npm run cy:run
     - name: Run build
       run: npm run build  
+    - name: Run Clean Icons
+      run: npm run cleanIcon
     - name: copy file via ssh key
       uses: garygrossgarten/github-action-scp@release
       with:

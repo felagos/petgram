@@ -5,8 +5,42 @@ on:
     branches: [ master ]
 
 jobs:
+  setup-app:
+    runs-on: ubuntu-latest
+    name: setup-app
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14' 
+      - name: Install Packages
+        run: sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+      - name: Cache Node Modules
+        id: cache-node-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+  test-app:
+    runs-on: ubuntu-latest
+    needs: setup-app
+    name: test-app
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14' 
+      - name: Run install
+        if: steps.cacheDependencies.outputs.cache-hit != 'true'
+        run: npm i
+      - name: Test E2E
+        run: npm run ci:cy-run
+
   build:
     runs-on: ubuntu-latest
+    needs: test-app
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 14
@@ -14,7 +48,8 @@ jobs:
       with:
         node-version: '14'
     - name: Run install
-      run: npm ci
+      if: steps.cacheDependencies.outputs.cache-hit != 'true'
+      run: npm i
     - name: Run build
       run: npm run build  
     - name: Run Clean Icons

@@ -34,7 +34,7 @@ jobs:
           node-version: '14' 
       - name: Check if node modules are on cache
         if: steps.cacheDependencies.outputs.cache-hit == 'true'
-        run: echo 'no esta en cache'
+        run: echo steps.cacheDependencies.outputs.cache-hit
       - name: Run install
         if: steps.cacheDependencies.outputs.cache-hit != 'true'
         run: npm i

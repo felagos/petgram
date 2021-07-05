@@ -33,6 +33,8 @@ jobs:
         with:
           node-version: '14' 
       - name: Run install
+        if: steps.cacheDependencies.outputs.cache-hit == 'true'
+        run: echo 'no esta en cache'
         if: steps.cacheDependencies.outputs.cache-hit != 'true'
         run: npm i
       - name: Test E2E
